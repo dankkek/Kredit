@@ -1,0 +1,33 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+
+#DEB_MAKE_CHECK_TARGET = test_Kredit
+#build/Kreditd::
+#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_Kredit)
+
+DEB_INSTALL_EXAMPLES_Kreditd += debian/examples/*
+DEB_INSTALL_MANPAGES_Kreditd += debian/manpages/*
+
+%:
+	dh --with bash-completion $@
+
+override_dh_auto_build:
+	cd src; $(MAKE) -f makefile.unix Kreditd
+	$(MAKE)
+
+override_dh_auto_clean:
+	if [ -f Makefile ]; then $(MAKE) clean; else rm -rf build/; rm -f Kredit-qt; fi
+	cd src; $(MAKE) -f makefile.unix clean
+
+override_dh_auto_configure:
+	qmake Kredit-qt.pro USE_QRCODE=1
+
+override_dh_auto_test:
+	cd src; $(MAKE) -f makefile.unix test_Kredit
+	src/test_Kredit
+
+# Ensure wrapper is set executable
+binary-post-install/Kreditd:
+	chmod +x $(cdbs_curdestdir)usr/bin/Kreditd
+binary-post-install/Kredit-qt:
+	chmod +x $(cdbs_curdestdir)usr/bin/Kredit-qt
