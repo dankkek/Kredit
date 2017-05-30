@@ -1,0 +1,6 @@
+Kredit-qt usr/bin
+share/pixmaps/Kredit32.xpm usr/share/pixmaps
+share/pixmaps/Kredit16.xpm usr/share/pixmaps
+share/pixmaps/Kredit128.png usr/share/pixmaps
+debian/Kredit-qt.desktop usr/share/applications
+debian/Kredit-qt.protocol usr/share/kde4/services/

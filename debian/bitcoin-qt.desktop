@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Kredit
+Comment=Kredit P2P Cryptocurrency
+Comment[fr]=Kredit, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Kredit, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/Kredit-qt %u
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/Kredit128.png
+MimeType=x-scheme-handler/Kredit;
+Categories=Office;
